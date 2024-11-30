@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>External Threadfeed configuration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<link rel='stylesheet' type='text/css' media='screen' href='https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css'>
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+</head>
+<style>
+    nav{
+		height:10vh;
+		width:100vw;
+		background-color:transparent;
+		position: absolute;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	nav img{
+		height:7vh;
+		width: 10vw;
+	}
+	nav .navpart{
+		height: 10vh;
+		width: 30vw;
+		color: white;
+		display:flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.navpart a{
+		height:50%;
+		width: 7vw;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		color:aquamarine;
+		text-shadow:1px 5px 1px black;
+		border-radius: 1px;
+		background: linear-gradient(to right, black 50%, transparent 50%);
+		background-size: 200% 100%;
+		background-position: right bottom;
+		transition: all .5s ease-out;
+	}
+	.navpart a:hover{
+		background-position: left bottom;
+		color:white;
+		text-shadow:none;
+	}
+	
+    .body {
+        background: url("./wp2554624.jpg");
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        background-size: cover;
+        align-items: center;
+
+    }
+
+    .part1 {
+        background-color: transparent;
+        color: rgb(224, 212, 223);
+        height: 70vh;
+        width: 70vw;
+        border-radius: 10px 5px 10px 0px;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        border: 1px solid rgb(185, 185, 185);
+        box-shadow: 0px 10px 15px 0px rgb(29, 67, 83);
+        font-family: Georgia, serif;
+        font-size: larger;
+        align-items: center;
+    }
+
+    .input {
+        height: 65vh;
+        width: 35vw;
+        background-color: transparent;
+        border: 1px solid pink;
+        box-shadow: 0px 2px 20px 0px white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .output {
+        height: 65vh;
+        width: 35vw;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        border: 1px solid pink;
+        box-shadow: 0px 2px 20px 0px white;
+    }
+
+        .part1 {
+    @media only screen and (max-width: 600px) {
+            height: 37%;
+            width: 70%;
+        }
+    }
+</style>
+</head>
+
+<body>
+	
+	<nav>
+		<img src="./test.png">
+		<div class="navpart">
+			<a href="index.html">Home</a>
+			<a href="#">Product</a>
+			<a href="#">Support</a>
+			<a href="#">Query</a>
+		</div>
+	</nav>
+    <div class="body">
+        <div class="part1">
+            <div class="input">
+                <div class="field1" style="justify-content: center; ">
+                    <textarea style="height: 40vh; width: 30vw; color: chocolate; padding: 10px;" id="input" ></textarea>
+                </div>
+                <div class="field2" >
+                    <button id="run" type="button" pys-onClick="count" class="btn btn-light">Click</button>
+                    <button id="clear" type="button" pys-onClick="clear" class="btn btn-light">Clear</button>
+                </div>
+            </div>
+            <div class="output">
+                <textarea style="height: 95%; width: 95%; background-color:black; color:blue; padding: 10px;" id="output"></textarea>
+            </div>
+        </div>
+    </div>
+
+</body>
+<py-script>
+input_text = Element("input")    
+
+op = Element("output")
+
+def take(p):
+	b=[]
+	n=len(p)
+	for i in range(0,n):
+		t=p[i]
+		t=t.replace("[","")
+		t=t.replace("]","")
+		t=t.replace("•","")
+		t=t.replace(",","")
+		t=t.replace(" ","")
+		if t=="":
+			continue
+		a=[t]
+		b.append(a)
+	return b
+
+def clear(*args, **kwargs):
+    input_text.clear()
+
+def count(*args, **kwargs):
+	number = input_text.value
+	number=number.replace(" ","")
+	if number==" " or number == "":
+		op.write("Enter Correct Input!!!")
+		return
+	p=number.split('\n')
+	c=take(p)
+	output=""
+	for i in c:
+		for j in i:
+			output=output+"\n"+j
+	op.write(output)
+</py-script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+</html>

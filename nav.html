@@ -1,0 +1,58 @@
+<style>
+	* {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+	nav{
+		height:10vh;
+		width:100vw;
+		background-color:transparent;
+		position: absolute;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+	}
+	nav img{
+		height:7vh;
+		width: 10vw;
+	}
+	nav .navpart{
+		height: 10vh;
+		width: 30vw;
+		color: white;
+		display:flex;
+		justify-content: space-evenly;
+		align-items: center;
+	}
+	.navpart a{
+		height:50%;
+		width: 7vw;
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		color:aquamarine;
+		text-shadow:1px 5px 1px black;
+		border-radius: 1px;
+		background: linear-gradient(to right, black 50%, transparent 50%);
+		background-size: 200% 100%;
+		background-position: right bottom;
+		transition: all .5s ease-out;
+	}
+	.navpart a:hover{
+		background-position: left bottom;
+		color:white;
+		text-shadow:none;
+	}
+</style>
+	<nav>
+		<img src="./test.png">
+		<div class="navpart">
+			<a href="#">Home</a>
+			<a href="#">Product</a>
+			<a href="#">Support</a>
+			<a href="#">Query</a>
+		</div>
+	</nav>
+	
+
